@@ -1,19 +1,18 @@
 import { useState } from "react";
 import { TagType } from "../../types/TagType";
 
-export const Tag = ({ tag }: { tag: TagType }) => {
+export const Tag = ({
+  tag,
+  enableCursorPointer,
+}: {
+  tag: TagType;
+  enableCursorPointer: boolean;
+}) => {
   const [selectedTag, setSelectedTag] = useState("");
+  const cursorPointerClass = enableCursorPointer ? "cursor-pointer" : "";
   return (
     <div
-      style={{
-        margin: "10px",
-        padding: "5px",
-        borderRadius: "3px",
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "center",
-        backgroundColor: `${tag.color}`,
-      }}
+      className={`w-[100px] bg-white shadow py-1 rounded-2xl border border-gray-200 text-gray-500 font-thin ${cursorPointerClass}`}
     >
       {tag.name.fr}
     </div>

@@ -3,19 +3,9 @@ import { TagType } from "../../types/TagType";
 
 export const Tags = ({ tags }: { tags: TagType[] }) => {
   return (
-    <div
-      style={{
-        margin: "10px",
-        padding: "5px",
-        backgroundColor: "red",
-        borderRadius: "3px",
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "center",
-      }}
-    >
+    <div className="w-full h-[100px] bg-white flex justify-evenly items-center">
       {tags.map((obj) => (
-        <Tag tag={obj} />
+        <Tag tag={obj} enableCursorPointer={true} />
       ))}
     </div>
   );

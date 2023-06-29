@@ -2,99 +2,50 @@ import { RecipeType } from "../../types/RecipeType";
 import Steps from "../Steps/Steps";
 import IngredientsWithQuantity from "../Ingredients/IngredientsWithQuantity";
 import { useState } from "react";
-import { Tags } from "../Tags/Tags";
+// import { Tags } from "../Tags/Tags";
+import { Tag } from "../Tags/Tag";
 
 export const Recipe = ({ recipe }: { recipe: RecipeType }) => {
   const [showSteps, setShowSteps] = useState<Boolean>(false);
   const [showIngredients, setShowIngredients] = useState<boolean>(false);
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "row",
-        padding: "10px",
-        boxShadow: "5px 5px 7px 2px rgba(0,0,0,0.76)",
-        marginTop: "20px",
-      }}
-    >
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "space-evenly",
-          height: "200px",
-          width: "70%",
-          backgroundImage: `url(${recipe.imageURL})`,
-          backgroundSize: "cover",
-        }}
-      ></div>
-      <div
-        style={{
-          padding: "10px",
-          backgroundColor: "lightblue",
-          width: "100%",
-        }}
-      >
-        <h2>Nom de la recette: {recipe.nom}</h2>
-        <div
-          style={{
-            padding: "10px",
-          }}
-        >
-          {recipe.description}
+    <div className="w-[560px] min-h-[400px] bg-white flex justify-between mb-8">
+      <div className="w-[50%]">
+        <img
+          src={`${recipe.imageURL}`}
+          alt={recipe.name}
+          className="w-full h-[200px] object-cover rounded-lg shadow-md"
+        />
+        <div className="h-[120px]">
+          <h2 className="text-lg text-left my-3 font-semibold text-zinc-700">
+            {recipe.name}
+          </h2>
+          <p className="font-thin text-left text-sm text-zinc-500">
+            {recipe.description}
+          </p>
         </div>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-          }}
-        >
-          <Tags tags={recipe.tags} />
-        </div>
-        <div
-          style={{
-            backgroundColor: "blanchedalmond",
-            padding: "10px",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "flex-start",
-          }}
-        >
-          Ingrédients:
-          <button onClick={() => setShowIngredients(!showIngredients)}>
-            {showIngredients ? "Masquer" : "Afficher"}
-          </button>
-          {showIngredients && (
-            <IngredientsWithQuantity
-              ingredientsWithQuantity={recipe.ingredientsWithQuantity}
-            />
-          )}
-        </div>
-        <div
-          style={{
-            padding: "10px",
-            display: "flex",
-            flexDirection: "column",
-            alignContent: "flex-start",
-            alignItems: "flex-start",
-          }}
-        >
-          <div
-            style={{
-              padding: "10px",
-              display: "flex",
-              flexDirection: "column",
-            }}
-          >
-            Etapes de la recette:
-            <button onClick={() => setShowSteps(!showSteps)}>
-              {showSteps ? "Masquer" : "Afficher"}
-            </button>
-          </div>
-          {recipe.etapes && showSteps && <Steps steps={recipe.etapes} />}
+        <div className="flex justify-evenly">
+          {recipe.tags.map((tag) => (
+            <Tag key={tag.id} tag={tag} enableCursorPointer={false} />
+          ))}
         </div>
       </div>
+      <div className="w-[45%]">
+        <IngredientsWithQuantity
+          ingredientsWithQuantity={recipe.ingredientsWithQuantity}
+        />
+      </div>
+
+      {/* <div className="w-[80%] h-[1px] bg-zinc-300 mx-auto" /> */}
+
+      {/* <div>
+        Etapes de la recette:
+        <button onClick={() => setShowSteps(!showSteps)}>
+          {showSteps ? "Masquer" : "Afficher"}
+        </button>
+        {recipe.etapes && showSteps && <Steps steps={recipe.etapes} />}
+      </div> */}
     </div>
   );
 };

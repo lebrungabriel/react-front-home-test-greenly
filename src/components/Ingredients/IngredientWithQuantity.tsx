@@ -7,11 +7,7 @@ export const IngredientWithQuantity = ({
   ingredientWithQuantity: IngredientWithQuantityType;
 }) => {
   return (
-    <div
-      style={{
-        display: "flex",
-      }}
-    >
+    <p className="text-zinc-700 font-light text-left text-md">
       {ingredientWithQuantity.quantity}
       {ingredientWithQuantity.unit}
       &nbsp;
@@ -21,6 +17,6 @@ export const IngredientWithQuantity = ({
         ingredient={ingredientWithQuantity.ingredient}
         quantity={ingredientWithQuantity.quantity}
       />
-    </div>
+    </p>
   );
 };
