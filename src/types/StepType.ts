@@ -1,4 +1,4 @@
-import { IngredientWithQuantityType } from "../Ingredients/IngredientWithQuantityType";
+import { IngredientWithQuantityType } from "../types/IngredientWithQuantityType";
 
 export type StepType = {
   description: string;

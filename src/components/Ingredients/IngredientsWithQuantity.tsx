@@ -1,9 +1,8 @@
-import Ingredient from "./Ingredient";
-import { IngredientWithQuantityType } from "./IngredientWithQuantityType";
+import { IngredientWithQuantityType } from "../../types/IngredientWithQuantityType";
 import { IngredientWithQuantity } from "./IngredientWithQuantity";
 
-export const IngredientsWithQuantity = ({
-  ingredientsWithQuantity
+const IngredientsWithQuantity = ({
+  ingredientsWithQuantity,
 }: {
   ingredientsWithQuantity: IngredientWithQuantityType[];
 }) => {

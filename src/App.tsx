@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./styles.css";
-import Recipes from "./Recipes/Recipes";
+import Recipes from "./components/Recipes/Recipes";
 import {
   allRecipes,
   sugarRecipes,
@@ -8,20 +8,20 @@ import {
   dessertRecipes,
   noEggsRecipes,
   chocolateRecipes,
-  autumnRecipes,
+  vegetarianRecipes,
   veganRecipes,
   chocolateDessertRecipes,
-} from "./Recipes/RecipeData";
-import { TagList } from "./Tagfilter/ListeDesTags";
-import { tagList } from "./Tags/TagData";
+} from "./data/RecipeData";
+import { Tags } from "./components/Tags/Tags";
+import { tagList } from "./data/TagData";
 
 export default function App() {
   const [filter, setFilter] = useState<string>("all");
   return (
     <div className="App">
       Liste des recettes
-      <TagList tags={tagList} />
-      <button onClick={() => setFilter("chocolate")}>Chocolat</button>
+      <Tags tags={tagList} />
+      {/* <button onClick={() => setFilter("chocolate")}>Chocolat</button>
       <button onClick={() => setFilter("sugar")}>Sucre</button>
       <button onClick={() => setFilter("summer")}>Eté</button>
       <button onClick={() => setFilter("dessert")}>Dessert</button>
@@ -30,7 +30,7 @@ export default function App() {
       </button>
       <button onClick={() => setFilter("eggs free")}>Sans Oeufs</button>
       <button onClick={() => setFilter("autumn")}> Autumn</button>
-      <button onClick={() => setFilter("vegan")}> Vegan</button>
+      <button onClick={() => setFilter("vegan")}> Vegan</button> */}
       {filter === "all" && <Recipes recipes={allRecipes} />}
       {filter === "sugar" && <Recipes recipes={sugarRecipes} />}
       {filter === "summer" && <Recipes recipes={summerRecipes} />}
@@ -40,7 +40,7 @@ export default function App() {
       )}
       {filter === "eggs free" && <Recipes recipes={noEggsRecipes} />}
       {filter === "chocolate" && <Recipes recipes={chocolateRecipes} />}
-      {filter === "autumn" && <Recipes recipes={autumnRecipes} />}
+      {filter === "autumn" && <Recipes recipes={vegetarianRecipes} />}
       {filter === "vegan" && <Recipes recipes={veganRecipes} />}
     </div>
   );

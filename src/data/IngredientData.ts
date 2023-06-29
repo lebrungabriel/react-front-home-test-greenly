@@ -1,4 +1,4 @@
-import { IngredientType } from "./IngredientType";
+import { IngredientType } from "../types/IngredientType";
 
 export const chocolate: IngredientType = {
   name: "chocolat",
@@ -68,6 +68,6 @@ export const feta: IngredientType = {
 
 export const cucumber: IngredientType = {
   name: "concombre",
-  type: "vegetables",
-  unit: "unit",
+  names: "concombres",
+  type: "légumes",
 };

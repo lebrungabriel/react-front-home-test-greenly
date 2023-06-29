@@ -1,5 +1,5 @@
-import { RecipeType } from "./RecipeType";
-import { ListOfRecipes } from "./RecipeType";
+import { RecipeType } from "../types/RecipeType";
+import { ListOfRecipes } from "../types/RecipeType";
 
 import {
   sugar,
@@ -14,22 +14,24 @@ import {
   salad,
   cucumber,
   feta,
-} from "../Ingredients/IngredientData";
+} from "./IngredientData";
 
 import {
   stepsFondantChocolat,
   stepsPavlova,
   stepsTarteAuxPoires,
-} from "../Steps/StepData";
+} from "./StepData";
 
 import {
-  appetizer,
-  autumn,
-  dessert,
   summer,
-  vegan,
   winter,
-} from "../Tags/TagData";
+  chocolateTag,
+  fruits,
+  meat,
+  fish,
+  vegetarian,
+  vegan,
+} from "./TagData";
 
 const pavlova: RecipeType = {
   nom: "Pavlova",
@@ -44,7 +46,7 @@ const pavlova: RecipeType = {
     { ingredient: redFruits, quantity: 100, unit: "g" },
     { ingredient: cream, quantity: 20, unit: "cl" },
   ],
-  tags: [summer, dessert],
+  tags: [summer, fruits],
 };
 
 const fondantChocolat: RecipeType = {
@@ -61,7 +63,7 @@ const fondantChocolat: RecipeType = {
     { ingredient: chocolate, quantity: 200, unit: "g" },
     { ingredient: butter, quantity: 150, unit: "g" },
   ],
-  tags: [dessert, winter],
+  tags: [chocolateTag, winter],
 };
 
 const pearPie: RecipeType = {
@@ -78,7 +80,7 @@ const pearPie: RecipeType = {
     { ingredient: sugar, quantity: 150, unit: "g" },
     { ingredient: egg, quantity: 2 },
   ],
-  tags: [dessert, autumn],
+  tags: [vegetarian, fruits],
 };
 
 const waldorfSalad: RecipeType = {
@@ -95,7 +97,7 @@ const waldorfSalad: RecipeType = {
     },
     { ingredient: feta, quantity: 150, unit: "g" },
   ],
-  tags: [appetizer, summer, vegan],
+  tags: [summer, vegan],
 };
 
 export const allRecipes: ListOfRecipes = [
@@ -149,9 +151,9 @@ export const noEggsRecipes: RecipeType[] = allRecipes.filter((recette) => {
   return !ingredientsString.includes("oeuf");
 });
 
-export const autumnRecipes: RecipeType[] = allRecipes.filter((recette) => {
+export const vegetarianRecipes: RecipeType[] = allRecipes.filter((recette) => {
   const tagIds = recette.tags.map((tag) => tag.id);
-  return tagIds.includes("autumn");
+  return tagIds.includes("vegetarian");
 });
 
 export const veganRecipes: RecipeType[] = allRecipes.filter((recette) => {

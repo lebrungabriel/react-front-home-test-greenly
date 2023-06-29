@@ -1,5 +1,5 @@
 import { Tag } from "./Tag";
-import { TagType } from "./TagType";
+import { TagType } from "../../types/TagType";
 
 export const Tags = ({ tags }: { tags: TagType[] }) => {
   return (
@@ -7,6 +7,7 @@ export const Tags = ({ tags }: { tags: TagType[] }) => {
       style={{
         margin: "10px",
         padding: "5px",
+        backgroundColor: "red",
         borderRadius: "3px",
         display: "flex",
         flexDirection: "row",

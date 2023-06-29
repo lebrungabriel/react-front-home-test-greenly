@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { TagType } from "./TagType";
+import { TagType } from "../../types/TagType";
 
 export const Tag = ({ tag }: { tag: TagType }) => {
   const [selectedTag, setSelectedTag] = useState("");
@@ -12,7 +12,7 @@ export const Tag = ({ tag }: { tag: TagType }) => {
         display: "flex",
         flexDirection: "row",
         justifyContent: "center",
-        backgroundColor: `${tag.color}`
+        backgroundColor: `${tag.color}`,
       }}
     >
       {tag.name.fr}
