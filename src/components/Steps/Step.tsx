@@ -1,32 +1,17 @@
 import IngredientsWithQuantity from "../Ingredients/IngredientsWithQuantity";
 import { StepType } from "../../types/StepType";
 
-export const Step = ({ etape }: { etape: StepType }) => {
+export const Step = ({ step }: { step: StepType }) => {
   return (
-    <div
-      style={{
-        backgroundColor: "thistle",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "flex-start",
-        textAlign: "left",
-        padding: "10px",
-      }}
-    >
-      <div>
-        {etape.order}. {etape.description}
-      </div>
-      <div
-        style={{
-          padding: "10px",
-        }}
-      >
-        {etape.ingredients && (
-          <IngredientsWithQuantity
-            ingredientsWithQuantity={etape.ingredients}
-          />
+    <div>
+      <h6 className="text-zinc-800 text-sm mb-1">
+        {step.order}. {step.description}
+      </h6>
+      <p className="text-sm font-thin mb-3">
+        {step.ingredients && (
+          <IngredientsWithQuantity ingredientsWithQuantity={step.ingredients} />
         )}
-      </div>
+      </p>
     </div>
   );
 };

@@ -1,13 +1,17 @@
 import { RecipeType } from "../../types/RecipeType";
 import Steps from "../Steps/Steps";
 import IngredientsWithQuantity from "../Ingredients/IngredientsWithQuantity";
+import { StepType } from "../../types/StepType";
 import { useState } from "react";
 // import { Tags } from "../Tags/Tags";
 import { Tag } from "../Tags/Tag";
+import SimpleAccordion from "../MaterialUI/SimpleAccordion";
 
 export const Recipe = ({ recipe }: { recipe: RecipeType }) => {
   const [showSteps, setShowSteps] = useState<Boolean>(false);
   const [showIngredients, setShowIngredients] = useState<boolean>(false);
+
+  const steps: StepType[] = recipe.steps || [];
 
   return (
     <div className="w-[560px] min-h-[400px] bg-white flex justify-between mb-8">
@@ -32,8 +36,12 @@ export const Recipe = ({ recipe }: { recipe: RecipeType }) => {
         </div>
       </div>
       <div className="w-[45%]">
-        <IngredientsWithQuantity
+        {/* <IngredientsWithQuantity
           ingredientsWithQuantity={recipe.ingredientsWithQuantity}
+        /> */}
+        <SimpleAccordion
+          ingredientsWithQuantity={recipe.ingredientsWithQuantity}
+          steps={steps}
         />
       </div>
 

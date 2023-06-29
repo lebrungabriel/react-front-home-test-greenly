@@ -8,7 +8,7 @@ export type RecipeType = {
   description: string;
   imageURL: string;
   ingredients?: IngredientType[];
-  etapes?: StepType[];
+  steps?: StepType[];
   ingredientsWithQuantity: IngredientWithQuantityType[];
   tags: TagType[];
 };

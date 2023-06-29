@@ -2,9 +2,12 @@ import {
   butter,
   chocolate,
   cream,
+  cucumber,
   egg,
+  feta,
   flour,
   redFruits,
+  salad,
   sugar,
 } from "./IngredientData";
 
@@ -39,7 +42,7 @@ export const stepsPavlova: StepType[] = [
   },
 ];
 
-export const stepsFondantChocolat: StepType[] = [
+export const stepsChocolateFudge: StepType[] = [
   {
     description: "Faire fondre le chocolat avec le beurre au bain-marie.",
     order: 1,
@@ -73,7 +76,29 @@ export const stepsFondantChocolat: StepType[] = [
   },
 ];
 
-export const stepsTarteAuxPoires: StepType[] = [
+export const stepsWalfordSalad: StepType[] = [
+  {
+    description: "Laver la salade.",
+    order: 1,
+    ingredients: [{ ingredient: salad, quantity: 1 }],
+  },
+  {
+    description: "Éplucher puis couper le concombre.",
+    order: 2,
+    ingredients: [{ ingredient: cucumber, quantity: 1 }],
+  },
+  {
+    description: "Couper la feta en morceaux",
+    order: 3,
+    ingredients: [{ ingredient: feta, quantity: 150, unit: "g" }],
+  },
+  {
+    description: "Mélanger le tout dans un saladier et verser une vinaigrette.",
+    order: 4,
+  },
+];
+
+export const stepsPearPie: StepType[] = [
   {
     description: "Préparer la pâte sablée.",
     order: 1,
