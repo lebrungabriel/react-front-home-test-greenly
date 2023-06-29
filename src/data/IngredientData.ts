@@ -12,6 +12,83 @@ export const sugar: IngredientType = {
   prefix: "de",
 };
 
+export const lemon: IngredientType = {
+  name: "citron",
+  names: "citrons",
+  type: "fruit",
+};
+
+export const oil: IngredientType = {
+  name: "huile d'olive",
+  unit: "cl",
+  prefix: "d'",
+};
+
+export const salmon: IngredientType = {
+  name: "pavé saumon",
+  names: "pavés de saumon",
+  type: "poisson",
+};
+
+export const onion: IngredientType = {
+  name: "oignon",
+  names: "oignons",
+  type: "légume",
+};
+
+export const beef: IngredientType = {
+  name: "steack de boeuf",
+  type: "viande",
+};
+
+export const cheese: IngredientType = {
+  name: "Fromage",
+  prefix: "tranches de",
+  type: "fromage",
+};
+
+export const carrot: IngredientType = {
+  name: "carotte",
+  names: "carottes",
+  type: "légume",
+};
+
+export const mushroom: IngredientType = {
+  name: "champignon",
+  names: "champignons",
+  prefix: "de",
+  type: "légume",
+};
+
+export const tomato: IngredientType = {
+  name: "tomate",
+  names: "tomates",
+  type: "légume",
+};
+
+export const redPepper: IngredientType = {
+  name: "poivron rouge",
+  names: "poivrons rouge",
+  type: "légume",
+};
+
+export const greenPepper: IngredientType = {
+  name: "poivron vert",
+  names: "poivrons vert",
+  type: "légume",
+};
+
+export const garlic: IngredientType = {
+  name: "ail",
+  type: "légume",
+};
+
+export const veal: IngredientType = {
+  name: "veau",
+  type: "viande",
+  prefix: "de",
+};
+
 export const butter: IngredientType = {
   name: "beurre",
   type: "produit laitier",

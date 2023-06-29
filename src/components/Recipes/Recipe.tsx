@@ -30,7 +30,7 @@ export const Recipe = ({ recipe }: { recipe: RecipeType }) => {
           </p>
         </div>
         <div className="flex justify-evenly">
-          {recipe.tags.map((tag) => (
+          {recipe.tags.map((tag, index) => (
             <Tag key={tag.id} tag={tag} enableCursorPointer={false} />
           ))}
         </div>

@@ -5,10 +5,21 @@ import {
   cucumber,
   egg,
   feta,
+  salmon,
+  onion,
+  veal,
+  carrot,
+  mushroom,
+  oil,
+  lemon,
   flour,
   redFruits,
   salad,
   sugar,
+  redPepper,
+  greenPepper,
+  tomato,
+  beef,
 } from "./IngredientData";
 
 import { StepType as StepType } from "../types/StepType";
@@ -39,6 +50,61 @@ export const stepsPavlova: StepType[] = [
     description: "Disposer les fruits rouges sur le dessus.",
     order: 4,
     ingredients: [{ ingredient: redFruits, quantity: 100, unit: "g" }],
+  },
+];
+
+export const stepsBakedSalmon: StepType[] = [
+  {
+    description: "Mettre le saumon dans un plat allant au four.",
+    ingredients: [{ ingredient: salmon, quantity: 2 }],
+    order: 1,
+  },
+  {
+    description:
+      "Couper le citron en deux, le presser sur le saumon, puis couper le citron en lamelles et les disposer sur le saumon",
+    ingredients: [{ ingredient: lemon, quantity: 1 }],
+
+    order: 2,
+  },
+  {
+    description: "Ciseler les oignons et les disposer sur le saumon",
+    ingredients: [{ ingredient: onion, quantity: 5 }],
+    order: 3,
+  },
+  {
+    description:
+      "Verser l'huile d'olive sur le tout, saler, poivrer et faire cuire à 180° pendant 25 minutes.",
+    order: 4,
+    ingredients: [{ ingredient: oil, quantity: 15, unit: "cl" }],
+  },
+];
+
+export const stepsVealBlanquette: StepType[] = [
+  {
+    description: "Faire revenir le veau dans un peu de beurre.",
+    ingredients: [{ ingredient: veal, quantity: 1, unit: "kg" }],
+    order: 1,
+  },
+  {
+    description:
+      "Éplucher et couper les carottes, l'oignon et les champignons puis les incorporer à la viande",
+    ingredients: [
+      { ingredient: carrot, quantity: 2 },
+      { ingredient: mushroom, quantity: 500, unit: "g" },
+      { ingredient: onion, quantity: 1 },
+    ],
+
+    order: 2,
+  },
+  {
+    description: "Laisser mijoter à feu très doux pendant 2h00.",
+
+    order: 3,
+  },
+  {
+    description: "Incorporer la crème, mélanger et servir",
+    order: 4,
+    ingredients: [{ ingredient: cream, quantity: 15, unit: "cl" }],
   },
 ];
 
@@ -94,6 +160,53 @@ export const stepsWalfordSalad: StepType[] = [
   },
   {
     description: "Mélanger le tout dans un saladier et verser une vinaigrette.",
+    order: 4,
+  },
+];
+
+export const stepsGaspacho: StepType[] = [
+  {
+    description: "Couper les légumes en morceau et les passer au mixeur",
+    order: 1,
+    ingredients: [
+      { ingredient: cucumber, quantity: 1 },
+      { ingredient: redPepper, quantity: 1 },
+      { ingredient: greenPepper, quantity: 1 },
+      { ingredient: tomato, quantity: 8 },
+    ],
+  },
+  {
+    description: "Assaisonner avec du sel, du poivre et de l'huile d'olive",
+    order: 2,
+    ingredients: [{ ingredient: oil, quantity: 10, unit: "cl" }],
+  },
+  {
+    description: "Laisser reposer 2h00 et servir",
+    order: 3,
+  },
+];
+
+export const stepsBurger: StepType[] = [
+  {
+    description: "Couper l'oignon et la tomate en lamelles",
+    order: 1,
+    ingredients: [
+      { ingredient: tomato, quantity: 1 },
+      { ingredient: onion, quantity: 1 },
+    ],
+  },
+  {
+    description: "Faire cuire le steack.",
+    order: 2,
+    ingredients: [{ ingredient: beef, quantity: 1 }],
+  },
+  {
+    description: "Toaster les pains",
+    order: 3,
+  },
+  {
+    description:
+      "Déposer le steak sur le pain, mettre la salade, les légumes et le fromage par dessus puis refermer avec le pain",
     order: 4,
   },
 ];
