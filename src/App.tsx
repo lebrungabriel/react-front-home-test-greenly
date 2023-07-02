@@ -3,45 +3,40 @@ import "./styles.css";
 import Recipes from "./components/Recipes/Recipes";
 import {
   allRecipes,
-  sugarRecipes,
-  summerRecipes,
   dessertRecipes,
-  noEggsRecipes,
-  chocolateRecipes,
-  vegetarianRecipes,
-  veganRecipes,
-  chocolateDessertRecipes,
+  starterRecipes,
+  dishRecipes,
 } from "./data/RecipeData";
 import { Tags } from "./components/Tags/Tags";
 import { tagList } from "./data/TagData";
+import Header from "./components/Layout/Header";
 
 export default function App() {
   const [filter, setFilter] = useState<string>("all");
+
+  const handleFilterChange = (newFilter: string) => {
+    setFilter(newFilter);
+  };
+
+  const renderComponentBasedOnTypeFilter = () => {
+    if (filter === "starters") {
+      return <Recipes recipes={starterRecipes} />;
+    } else if (filter === "dishes") {
+      return <Recipes recipes={dishRecipes} />;
+    } else if (filter === "desserts") {
+      return <Recipes recipes={dessertRecipes} />;
+    } else if (filter === "all") {
+      return <Recipes recipes={allRecipes} />;
+    }
+  };
+
   return (
-    <div className="App">
-      Liste des recettes
-      <Tags tags={tagList} />
-      {/* <button onClick={() => setFilter("chocolate")}>Chocolat</button>
-      <button onClick={() => setFilter("sugar")}>Sucre</button>
-      <button onClick={() => setFilter("summer")}>Eté</button>
-      <button onClick={() => setFilter("dessert")}>Dessert</button>
-      <button onClick={() => setFilter("chocolate dessert")}>
-        dessert chocolat
-      </button>
-      <button onClick={() => setFilter("eggs free")}>Sans Oeufs</button>
-      <button onClick={() => setFilter("autumn")}> Autumn</button>
-      <button onClick={() => setFilter("vegan")}> Vegan</button> */}
-      {filter === "all" && <Recipes recipes={allRecipes} />}
-      {filter === "sugar" && <Recipes recipes={sugarRecipes} />}
-      {filter === "summer" && <Recipes recipes={summerRecipes} />}
-      {filter === "dessert" && <Recipes recipes={dessertRecipes} />}
-      {filter === "chocolate dessert" && (
-        <Recipes recipes={chocolateDessertRecipes} />
-      )}
-      {filter === "eggs free" && <Recipes recipes={noEggsRecipes} />}
-      {filter === "chocolate" && <Recipes recipes={chocolateRecipes} />}
-      {filter === "autumn" && <Recipes recipes={vegetarianRecipes} />}
-      {filter === "vegan" && <Recipes recipes={veganRecipes} />}
-    </div>
+    <>
+      <Header activeFilter={filter} onFilterChange={handleFilterChange} />
+      <div>
+        <Tags tags={tagList} />
+        {renderComponentBasedOnTypeFilter()}
+      </div>
+    </>
   );
 }

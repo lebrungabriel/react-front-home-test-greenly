@@ -80,6 +80,16 @@ export const winter: TagType = {
   color: "yellow",
 };
 
+export const dessert: TagType = {
+  id: "dessert",
+  name: {
+    fr: "dessert",
+    en: "dessert",
+  },
+  type: "menu",
+  color: "yellow",
+};
+
 export const tagList: TagType[] = [
   summer,
   winter,
@@ -87,6 +97,7 @@ export const tagList: TagType[] = [
   fruits,
   meat,
   fish,
+  dessert,
   vegetarian,
   vegan,
 ];

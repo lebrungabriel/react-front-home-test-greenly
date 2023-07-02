@@ -48,6 +48,7 @@ import {
   fish,
   vegetarian,
   vegan,
+  dessert,
 } from "./TagData";
 
 const pavlova: RecipeType = {
@@ -64,6 +65,7 @@ const pavlova: RecipeType = {
     { ingredient: cream, quantity: 20, unit: "cl" },
   ],
   tags: [summer, fruits],
+  type: "Dessert",
 };
 
 const vealBlanquette: RecipeType = {
@@ -81,6 +83,7 @@ const vealBlanquette: RecipeType = {
     { ingredient: cream, quantity: 20, unit: "cl" },
   ],
   tags: [winter, meat],
+  type: "Plat",
 };
 
 const burger: RecipeType = {
@@ -98,6 +101,7 @@ const burger: RecipeType = {
     { ingredient: salad, quantity: 1 },
   ],
   tags: [meat],
+  type: "Plat",
 };
 
 const gaspacho: RecipeType = {
@@ -115,6 +119,7 @@ const gaspacho: RecipeType = {
     { ingredient: oil, quantity: 10, unit: "cl" },
   ],
   tags: [summer, vegetarian],
+  type: "Entrée",
 };
 
 const chocolateFudge: RecipeType = {
@@ -132,6 +137,7 @@ const chocolateFudge: RecipeType = {
     { ingredient: butter, quantity: 150, unit: "g" },
   ],
   tags: [chocolateTag, winter],
+  type: "Dessert",
 };
 
 const pearPie: RecipeType = {
@@ -149,6 +155,7 @@ const pearPie: RecipeType = {
     { ingredient: egg, quantity: 2 },
   ],
   tags: [vegetarian, fruits],
+  type: "Dessert",
 };
 
 const waldorfSalad: RecipeType = {
@@ -167,6 +174,7 @@ const waldorfSalad: RecipeType = {
   ],
   tags: [summer, vegan],
   steps: stepsWalfordSalad,
+  type: "Entrée",
 };
 
 const bakedSalmon: RecipeType = {
@@ -187,6 +195,7 @@ const bakedSalmon: RecipeType = {
   ],
   tags: [fish, summer],
   steps: stepsBakedSalmon,
+  type: "Plat",
 };
 
 export const allRecipes: ListOfRecipes = [
@@ -200,36 +209,36 @@ export const allRecipes: ListOfRecipes = [
   burger,
 ];
 
-export const summerRecipes = allRecipes.filter((recipe) => {
+export const summerRecipes: RecipeType[] = allRecipes.filter((recipe) => {
   const recipesTags = recipe.tags.map((tag) => tag.id);
   return recipesTags.includes("summer");
 });
 
-export const sugarRecipes: RecipeType[] = allRecipes.filter((recette) => {
-  const ingredientsList: string[] | undefined = recette.ingredients?.map(
-    (ingredient) => ingredient.name
-  );
-  return ingredientsList && ingredientsList.includes("sucre");
-});
-
-export const chocolateRecipes: RecipeType[] = allRecipes.filter((recette) => {
-  const ingredientsList: string[] | undefined = recette.ingredients?.map(
+export const chocolateRecipes: RecipeType[] = allRecipes.filter((recipe) => {
+  const ingredientsList: string[] | undefined = recipe.ingredients?.map(
     (ingredient) => ingredient.name
   );
 
   return ingredientsList && ingredientsList.includes("chocolat");
 });
 
-export const dessertRecipes: RecipeType[] = allRecipes.filter((recette) => {
-  const tags: string[] = recette.tags.map((tag) => tag.id);
-  return tags.includes("dessert");
+export const starterRecipes: RecipeType[] = allRecipes.filter((recipe) => {
+  return recipe.type === "Entrée";
+});
+
+export const dishRecipes: RecipeType[] = allRecipes.filter((recipe) => {
+  return recipe.type === "Plat";
+});
+
+export const dessertRecipes: RecipeType[] = allRecipes.filter((recipe) => {
+  return recipe.type === "Dessert";
 });
 
 export const chocolateDessertRecipes: RecipeType[] = allRecipes.filter(
-  (recette) => {
-    const tagsString: string[] = recette.tags.map((tag) => tag.id);
-    const ingredientString: string[] = recette.ingredients
-      ? recette.ingredients.map((ingredient) => ingredient.name)
+  (recipe) => {
+    const tagsString: string[] = recipe.tags.map((tag) => tag.id);
+    const ingredientString: string[] = recipe.ingredients
+      ? recipe.ingredients.map((ingredient) => ingredient.name)
       : [];
     return (
       tagsString.includes("dessert") && ingredientString.includes("chocolat")
@@ -237,19 +246,19 @@ export const chocolateDessertRecipes: RecipeType[] = allRecipes.filter(
   }
 );
 
-export const noEggsRecipes: RecipeType[] = allRecipes.filter((recette) => {
-  const ingredientsString: string[] = recette.ingredients
-    ? recette.ingredients.map((ingredient) => ingredient.name)
+export const noEggsRecipes: RecipeType[] = allRecipes.filter((recipe) => {
+  const ingredientsString: string[] = recipe.ingredients
+    ? recipe.ingredients.map((ingredient) => ingredient.name)
     : [];
   return !ingredientsString.includes("oeuf");
 });
 
-export const vegetarianRecipes: RecipeType[] = allRecipes.filter((recette) => {
-  const tagIds = recette.tags.map((tag) => tag.id);
+export const vegetarianRecipes: RecipeType[] = allRecipes.filter((recipe) => {
+  const tagIds = recipe.tags.map((tag) => tag.id);
   return tagIds.includes("vegetarian");
 });
 
-export const veganRecipes: RecipeType[] = allRecipes.filter((recette) => {
-  const tagIds: string[] = recette.tags.map((tag) => tag.id);
+export const veganRecipes: RecipeType[] = allRecipes.filter((recipe) => {
+  const tagIds: string[] = recipe.tags.map((tag) => tag.id);
   return tagIds.includes("vegan");
 });

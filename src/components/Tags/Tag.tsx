@@ -12,7 +12,7 @@ export const Tag = ({
   const cursorPointerClass = enableCursorPointer ? "cursor-pointer" : "";
   return (
     <div
-      className={`w-[100px] bg-white shadow py-1 rounded-2xl border border-gray-200 text-gray-500 font-thin ${cursorPointerClass}`}
+      className={`w-[100px] flex justify-center items-center bg-white shadow py-1 rounded-2xl border border-gray-200 text-gray-500 font-light ${cursorPointerClass}`}
     >
       {tag.name.fr}
     </div>
