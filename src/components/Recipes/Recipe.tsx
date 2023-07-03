@@ -29,7 +29,7 @@ export const Recipe = ({ recipe }: { recipe: RecipeType }) => {
             {recipe.description}
           </p>
         </div>
-        <div className="flex justify-evenly">
+        <div className="flex flex-wrap gap-2 justify-evenly">
           {recipe.tags.map((tag) => (
             <Tag key={tag.id} tag={tag} enableCursorPointer={false} />
           ))}

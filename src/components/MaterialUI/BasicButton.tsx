@@ -17,9 +17,12 @@ const BasicButtons: React.FC<BasicButtonsProps> = ({
       <Button
         variant="text"
         style={{
-          color: "gray",
-          width: "200px",
-          backgroundColor: active ? "#e3f1fc" : "",
+          color: active ? "#333" : "gray",
+          width: "180px",
+          fontSize: "16px",
+          textTransform: "none",
+          borderBottom: active ? "1px solid #333" : "transparent",
+          transition: "border-bottom 0.3s ease-in-out",
         }}
         onClick={onClick}
       >
