@@ -9,3 +9,5 @@ export type TagType = {
   name: Translation;
   color: string;
 };
+
+export type listOfTags = TagType[];

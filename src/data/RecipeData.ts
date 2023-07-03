@@ -1,5 +1,8 @@
 import { RecipeType } from "../types/RecipeType";
 import { ListOfRecipes } from "../types/RecipeType";
+import { TagType } from "../types/TagType";
+
+import { allTags } from "./TagData";
 
 import {
   sugar,
@@ -89,7 +92,8 @@ const vealBlanquette: RecipeType = {
 const burger: RecipeType = {
   name: "Burger maison",
   description: "Une recette facile à préparer et peu onéreuse.",
-  imageURL: "",
+  imageURL:
+    "https://www.socopa.fr/wp-content/uploads/2021/09/top-5-des-sauces-burger-maison-1.jpg",
   ingredients: [beef, cheese, onion, tomato, salad],
   steps: stepsBurger,
   ingredientsWithQuantity: [
@@ -105,7 +109,8 @@ const burger: RecipeType = {
 const gaspacho: RecipeType = {
   name: "Gaspacho",
   description: "Fraîche, vitaminée, cette soupe froide est parfaite pour l'été",
-  imageURL: "",
+  imageURL:
+    "https://www.primevere.com/voy_content/uploads/2023/02/gaspacho_tomate_et_concombre_aux_croutons-1-scaled.jpg",
   ingredients: [tomato, redPepper, greenPepper, cucumber, oil],
   steps: stepsGaspacho,
   ingredientsWithQuantity: [
@@ -122,7 +127,8 @@ const chocolateFudge: RecipeType = {
   name: "Fondant au chocolat",
   description:
     "Le fondant au chocolat est un gâteau au chocolat qui fond en bouche",
-  imageURL: "",
+  imageURL:
+    "https://www.myparisiankitchen.com/wp-content/uploads/2021/04/fondant-chocolat-mpk-pa-2.jpg",
   ingredients: [chocolate, egg, flour, butter, sugar],
   steps: stepsChocolateFudge,
   ingredientsWithQuantity: [
@@ -173,7 +179,8 @@ const bakedSalmon: RecipeType = {
   name: "Saumon au four",
   description:
     "Pavé de saumon au four, idéal pour ne pas perdre trop de temps en cuisine",
-  imageURL: "",
+  imageURL:
+    "https://assets.epicurious.com/photos/62d6c5146b6e74298a39d06a/3:2/w_4998,h_3332,c_limit/BakedSalmon_RECIPE_04142022_9780_final.jpg",
   ingredients: [salmon, onion, oil, lemon],
   ingredientsWithQuantity: [
     { ingredient: salmon, quantity: 2 },
@@ -199,56 +206,37 @@ export const allRecipes: ListOfRecipes = [
   burger,
 ];
 
-export const summerRecipes: RecipeType[] = allRecipes.filter((recipe) => {
+export const starterRecipes: RecipeType[] = allRecipes.filter((recipe) => {
   const recipesTags = recipe.tags.map((tag) => tag.id);
-  return recipesTags.includes("summer");
+  return recipesTags.includes("starter");
 });
 
-export const chocolateRecipes: RecipeType[] = allRecipes.filter((recipe) => {
-  const ingredientsList: string[] | undefined = recipe.ingredients?.map(
-    (ingredient) => ingredient.name
-  );
-
-  return ingredientsList && ingredientsList.includes("chocolat");
+export const dishRecipes: RecipeType[] = allRecipes.filter((recipe) => {
+  const recipesTags = recipe.tags.map((tag) => tag.id);
+  return recipesTags.includes("dish");
 });
 
-// export const starterRecipes: RecipeType[] = allRecipes.filter((recipe) => {
-//   return recipe.type === "Entrée";
-// });
-
-// export const dishRecipes: RecipeType[] = allRecipes.filter((recipe) => {
-//   return recipe.type === "Plat";
-// });
-
-// export const dessertRecipes: RecipeType[] = allRecipes.filter((recipe) => {
-//   return recipe.type === "Dessert";
-// });
-
-export const chocolateDessertRecipes: RecipeType[] = allRecipes.filter(
-  (recipe) => {
-    const tagsString: string[] = recipe.tags.map((tag) => tag.id);
-    const ingredientString: string[] = recipe.ingredients
-      ? recipe.ingredients.map((ingredient) => ingredient.name)
-      : [];
-    return (
-      tagsString.includes("dessert") && ingredientString.includes("chocolat")
-    );
-  }
-);
-
-export const noEggsRecipes: RecipeType[] = allRecipes.filter((recipe) => {
-  const ingredientsString: string[] = recipe.ingredients
-    ? recipe.ingredients.map((ingredient) => ingredient.name)
-    : [];
-  return !ingredientsString.includes("oeuf");
+export const dessertRecipes: RecipeType[] = allRecipes.filter((recipe) => {
+  const recipesTags = recipe.tags.map((tag) => tag.id);
+  return recipesTags.includes("dessert");
 });
 
-export const vegetarianRecipes: RecipeType[] = allRecipes.filter((recipe) => {
-  const tagIds = recipe.tags.map((tag) => tag.id);
-  return tagIds.includes("vegetarian");
+export const starterTags: TagType[] = allTags.filter((tag) => {
+  return starterRecipes.some((recipe) => {
+    return recipe.tags.includes(tag);
+  });
 });
 
-export const veganRecipes: RecipeType[] = allRecipes.filter((recipe) => {
-  const tagIds: string[] = recipe.tags.map((tag) => tag.id);
-  return tagIds.includes("vegan");
+export const dishTags: TagType[] = allTags.filter((tag) => {
+  return dishRecipes.some((recipe) => {
+    return recipe.tags.includes(tag);
+  });
 });
+
+export const dessertTags: TagType[] = allTags.filter((tag) => {
+  return dessertRecipes.some((recipe) => {
+    return recipe.tags.includes(tag);
+  });
+});
+
+console.log("STARTER TAGS", dishTags);

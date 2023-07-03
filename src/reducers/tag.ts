@@ -4,11 +4,12 @@ import { TagType } from "../types/TagType";
 export type TagState = {
   value: {
     tags: TagType[];
+    activeMenu: string;
   };
 };
 
 const initialState: TagState = {
-  value: { tags: [] },
+  value: { tags: [], activeMenu: "all" },
 };
 
 export const tagSlice = createSlice({
@@ -25,8 +26,11 @@ export const tagSlice = createSlice({
         state.value.tags.push(action.payload);
       }
     },
+    addMenuToStore: (state: TagState, action: PayloadAction<string>) => {
+      state.value.activeMenu = action.payload;
+    },
   },
 });
 
-export const { addTagNameToStore } = tagSlice.actions;
+export const { addTagNameToStore, addMenuToStore } = tagSlice.actions;
 export default tagSlice.reducer;

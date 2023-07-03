@@ -110,7 +110,7 @@ export const starter: TagType = {
   color: "#B2A4FF",
 };
 
-export const tagList: TagType[] = [
+export const allTags: TagType[] = [
   summer,
   winter,
   chocolateTag,
