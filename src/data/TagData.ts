@@ -7,7 +7,7 @@ export const summer: TagType = {
     en: "summer",
   },
   type: "season",
-  color: "#FFD89C",
+  color: "#FFDEB4",
 };
 
 export const meat: TagType = {
@@ -27,7 +27,7 @@ export const chocolateTag: TagType = {
     en: "chocolate",
   },
   type: "delicacy",
-  color: "#867070",
+  color: "#F9F5E7",
 };
 
 export const vegan: TagType = {
@@ -37,7 +37,7 @@ export const vegan: TagType = {
     en: "vegan",
   },
   type: "diet",
-  color: "#FEFAE0",
+  color: "#B2A4FF",
 };
 
 export const fruits: TagType = {
@@ -77,7 +77,7 @@ export const winter: TagType = {
     en: "winter",
   },
   type: "season",
-  color: "yellow",
+  color: "#AEC2B6",
 };
 
 export const dessert: TagType = {
@@ -90,6 +90,26 @@ export const dessert: TagType = {
   color: "yellow",
 };
 
+export const dish: TagType = {
+  id: "dish",
+  name: {
+    fr: "Plat",
+    en: "Dish",
+  },
+  type: "menu",
+  color: "#6096B4",
+};
+
+export const starter: TagType = {
+  id: "starter",
+  name: {
+    fr: "Entrée",
+    en: "Starter",
+  },
+  type: "menu",
+  color: "#B2A4FF",
+};
+
 export const tagList: TagType[] = [
   summer,
   winter,
@@ -99,5 +119,7 @@ export const tagList: TagType[] = [
   fish,
   dessert,
   vegetarian,
+  dish,
+  starter,
   vegan,
 ];

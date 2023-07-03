@@ -16,7 +16,6 @@ export default function SimpleAccordion({
   ingredientsWithQuantity: IngredientWithQuantityType[];
   steps: StepType[];
 }) {
-  console.log(steps);
   return (
     <div>
       <Accordion style={{ boxShadow: "none", marginBottom: 5 }}>

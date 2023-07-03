@@ -1,42 +1,36 @@
-import { useState } from "react";
 import "./styles.css";
 import Recipes from "./components/Recipes/Recipes";
-import {
-  allRecipes,
-  dessertRecipes,
-  starterRecipes,
-  dishRecipes,
-} from "./data/RecipeData";
+import { allRecipes } from "./data/RecipeData";
 import { Tags } from "./components/Tags/Tags";
 import { tagList } from "./data/TagData";
-import Header from "./components/Layout/Header";
+// import Header from "./components/Layout/Header";
+import { useSelector } from "react-redux";
+import { TagState } from "./reducers/tag";
+import { RecipeType } from "./types/RecipeType";
 
 export default function App() {
-  const [filter, setFilter] = useState<string>("all");
+  const selectedTags = useSelector(
+    (state: { tag: TagState }) => state.tag.value
+  );
+  let filteredRecipes: RecipeType[] = allRecipes;
 
-  const handleFilterChange = (newFilter: string) => {
-    setFilter(newFilter);
-  };
+  console.log("REDUX STORE 🔥", selectedTags.tags);
 
-  const renderComponentBasedOnTypeFilter = () => {
-    if (filter === "starters") {
-      return <Recipes recipes={starterRecipes} />;
-    } else if (filter === "dishes") {
-      return <Recipes recipes={dishRecipes} />;
-    } else if (filter === "desserts") {
-      return <Recipes recipes={dessertRecipes} />;
-    } else if (filter === "all") {
-      return <Recipes recipes={allRecipes} />;
-    }
-  };
+  if (selectedTags.tags.length > 0) {
+    filteredRecipes = allRecipes.filter((recipe) => {
+      const recipeTagIds = recipe.tags.map((tag) => tag.id);
+      return selectedTags.tags.some((selectedTag) =>
+        recipeTagIds.includes(selectedTag.id)
+      );
+    });
+  }
 
+  console.log("ALL RECIPES 👑😈", allRecipes);
   return (
     <>
-      <Header activeFilter={filter} onFilterChange={handleFilterChange} />
-      <div>
-        <Tags tags={tagList} />
-        {renderComponentBasedOnTypeFilter()}
-      </div>
+      {/* <Header activeFilter="all" /> */}
+      <Tags tags={tagList} />
+      <Recipes recipes={filteredRecipes} />
     </>
   );
 }
