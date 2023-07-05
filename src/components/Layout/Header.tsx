@@ -1,9 +1,9 @@
-import React from "react";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addMenuToStore, addTagNameToStore } from "../../reducers/tag";
+import { addMenuToStore } from "../../reducers/tag";
 import { TagType } from "../../types/TagType";
 import BasicButtons from "../MaterialUI/BasicButton";
-import { useState } from "react";
+import SimpleMenu from "../MaterialUI/SimpeMenu";
 
 type HeaderType = {
   onFilterChange: (filter: string) => void;
@@ -19,9 +19,9 @@ const Header = ({ onFilterChange }: HeaderType) => {
   };
 
   return (
-    <div className="w-screen h-[200px] flex justify-around items-center">
+    <div className="container mx-auto w-screen h-[100px] flex justify-between px-3 items-center">
       <h1 className="text-3xl tracking-widest font-light">Super Cook</h1>
-      <div className="w-8/12 flex justify-evenly">
+      <div id="nav" className="w-8/12 hidden xl:flex justify-evenly">
         <BasicButtons
           onClick={() => handleClick("all")}
           text="Toutes les recettes"
@@ -42,6 +42,9 @@ const Header = ({ onFilterChange }: HeaderType) => {
           text="Desserts"
           active={activeFilter === "dessert"}
         />
+      </div>
+      <div className="xl:hidden">
+        <SimpleMenu onFilterChange={onFilterChange} />
       </div>
     </div>
   );

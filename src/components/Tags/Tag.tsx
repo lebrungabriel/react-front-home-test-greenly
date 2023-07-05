@@ -28,7 +28,7 @@ export const Tag = ({
   return (
     <div
       onClick={() => handlerSelectTag(tag)}
-      className={`w-[100px] flex justify-center items-center bg-white shadow py-1 rounded-2xl border border-gray-200 text-gray-500 font-light ${cursorPointerClass} ${
+      className={`flex justify-center items-center shadow py-1 px-4 rounded-2xl border border-gray-200 text-gray-500 font-light ${cursorPointerClass} ${
         className || ""
       }`}
       style={{
