@@ -19,8 +19,8 @@ const Header = ({ onFilterChange }: HeaderType) => {
   };
 
   return (
-    <div className="container mx-auto w-screen h-[100px] flex justify-between px-3 items-center">
-      <h1 className="text-3xl tracking-widest font-light">Super Cook</h1>
+    <div className="w-full h-[100px] flex justify-between px-3 items-center">
+      <h1 className="text-3xl font-bold italic">Super Cook</h1>
       <div id="nav" className="w-8/12 hidden xl:flex justify-evenly">
         <BasicButtons
           onClick={() => handleClick("all")}

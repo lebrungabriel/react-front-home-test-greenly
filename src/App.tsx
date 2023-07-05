@@ -29,19 +29,24 @@ export default function App() {
 
   let recipesToRender: RecipeType[] = [];
   let tagsToRender: TagType[] = [];
+  let titleMenuRendered: string = "all";
 
   if (filterMenu === "all") {
     recipesToRender = allRecipes;
     tagsToRender = allTags;
+    titleMenuRendered = "Toutes les recettes";
   } else if (filterMenu === "starter") {
     recipesToRender = starterRecipes;
     tagsToRender = starterTags;
+    titleMenuRendered = "Les entrées";
   } else if (filterMenu === "dish") {
     recipesToRender = dishRecipes;
     tagsToRender = dishTags;
+    titleMenuRendered = "Les plats";
   } else if (filterMenu === "dessert") {
     recipesToRender = dessertRecipes;
     tagsToRender = dessertTags;
+    titleMenuRendered = "Les desserts";
   }
 
   // Apply the tag filter
@@ -59,10 +64,11 @@ export default function App() {
   };
 
   return (
-    <>
+    <div className="container mx-auto">
       <Header onFilterChange={handleFilterChange} />
       <Tags tags={tagsToRender} />
+      <h1 className="ml-3 text-xl tracking-widest">{titleMenuRendered}</h1>
       <Recipes recipes={recipesToRender} />
-    </>
+    </div>
   );
 }

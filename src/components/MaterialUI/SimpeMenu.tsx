@@ -84,6 +84,11 @@ export default function SimpleMenu({ onFilterChange }: SimpleMenuProps) {
         variant="contained"
         disableElevation
         onClick={handleButtonClick}
+        style={{
+          backgroundColor: "#F6FAFD",
+          color: "black",
+          border: "1px solid lightgray",
+        }}
       >
         <MenuIcon />
       </Button>

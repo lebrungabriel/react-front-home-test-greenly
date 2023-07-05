@@ -1,27 +1,20 @@
 import { RecipeType } from "../../types/RecipeType";
-import Steps from "../Steps/Steps";
-import IngredientsWithQuantity from "../Ingredients/IngredientsWithQuantity";
 import { StepType } from "../../types/StepType";
-import { useState } from "react";
-// import { Tags } from "../Tags/Tags";
 import { Tag } from "../Tags/Tag";
 import SimpleAccordion from "../MaterialUI/SimpleAccordion";
 
 export const Recipe = ({ recipe }: { recipe: RecipeType }) => {
-  const [showSteps, setShowSteps] = useState<Boolean>(false);
-  const [showIngredients, setShowIngredients] = useState<boolean>(false);
-
   const steps: StepType[] = recipe.steps || [];
 
   return (
-    <div className="w-[560px] min-h-[400px] bg-white flex justify-between mb-8">
-      <div className="w-[50%]">
+    <div className="w-full md:w-[350px] lg:w-[500px] min-h-[400px] bg-white flex flex-col justify-between mb-8">
+      <div className="w-full">
         <img
           src={`${recipe.imageURL}`}
           alt={recipe.name}
           className="w-full h-[200px] object-cover rounded-lg shadow-md"
         />
-        <div className="h-[120px]">
+        <div className="h-[80px] mb-3">
           <h2 className="text-lg text-left my-3 font-semibold text-zinc-700">
             {recipe.name}
           </h2>
@@ -29,13 +22,13 @@ export const Recipe = ({ recipe }: { recipe: RecipeType }) => {
             {recipe.description}
           </p>
         </div>
-        <div className="flex flex-wrap gap-2 justify-evenly">
+        <div className="flex flex-wrap gap-2 justify-evenly py-3">
           {recipe.tags.map((tag) => (
             <Tag key={tag.id} tag={tag} enableCursorPointer={false} />
           ))}
         </div>
       </div>
-      <div className="w-[45%]">
+      <div className="w-full my-4 px-3">
         {/* <IngredientsWithQuantity
           ingredientsWithQuantity={recipe.ingredientsWithQuantity}
         /> */}
